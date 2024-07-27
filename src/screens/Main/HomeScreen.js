@@ -3,12 +3,8 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '../../store';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import { showMessage } from 'react-native-flash-message';
+import Header from '../Main/Header/Header'
 import {
-  AccessToken,
-  GraphRequest,
-  GraphRequestManager,
   LoginManager,
 } from 'react-native-fbsdk';
 const HomeScreen = observer(({ navigation }) => {
@@ -28,6 +24,8 @@ const HomeScreen = observer(({ navigation }) => {
 
   return (
     <View style={styles.container}>
+  <Header  title={'Main'}/>
+
       <Text style={styles.title}>Welcome, {userStore.user?.firstName}</Text>
       <Button title="Logout" onPress={signOut} />
     </View>
@@ -37,8 +35,8 @@ const HomeScreen = observer(({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
     backgroundColor: '#fff',
   },
   title: {

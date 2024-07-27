@@ -1,11 +1,9 @@
-// src/navigation/AppNavigator.js
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from '../splash/SplashScreen';
-import LoginScreen from '../Authentication/LoginScreen';
-import SignUpScreen from '../Authentication/SignUpScreen'
-import HomeScreen from '../Main/HomeScreen';
+import MainNav from './MainStack';
+import AuthNav from './AuthStack';
 
 const Stack = createStackNavigator();
 
@@ -14,9 +12,8 @@ const AppNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Splash">
         <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="SignUp" component={SignUpScreen}  options={{ headerShown: false }}  />
-        <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Main" component={MainNav} options={{ headerShown: false }} />
+        <Stack.Screen name="Auth" component={AuthNav} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

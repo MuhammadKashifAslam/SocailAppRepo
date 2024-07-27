@@ -81,7 +81,10 @@ import {
   // FACEBOOK_SIGN_IN_REQUEST,
   FACEBOOK_SIGN_IN_SUCCESS,
   FACEBOOK_SIGN_IN_FAILED,
+  Get_ALL_PRODUCTS_SUCCESS,
+  Get_ALL_PRODUCTS_FAILED,
 } from './actions';
+import { getAllProducts } from '../../Utils/constant';
 
 const BASE_URL = 'http://192.168.3.119:5000/api/auth'; // Update with your IP address
 
@@ -217,6 +220,34 @@ function* googleSignIn() {
   }
 }
 
+
+function* getAllProductRequest() {
+ 
+  try {
+    yield call(checkInternetConnection);
+   
+    const user = getAllProducts
+    yield put({ type: Get_ALL_PRODUCTS_SUCCESS, payload: user });
+    showMessage({
+      message: "Get Product Successful",
+      description: "You have successfully Get Product",
+      type: "success",
+    });
+  } catch (error) {
+    console.error('Google Sign-In Error:', error);
+    if (error.message === 'No internet connection') {
+      return;
+    }
+    showMessage({
+      message: "Get Product Failed",
+      description: error.message,
+      type: "danger",
+    });
+    yield put({ type: Get_ALL_PRODUCTS_FAILED, message: error.message });
+  }
+}
+
+
 // function* facebookSignIn() {
 //   try {
 //     yield call(checkInternetConnection);
@@ -254,6 +285,7 @@ function* mySaga() {
   yield takeEvery(LOGIN_REQUEST, loginUser);
   yield takeEvery(SIGNUP_REQUEST, signUpUser);
   yield takeEvery(GOOGLE_SIGN_IN_REQUEST, googleSignIn);
+  yield takeEvery(GET_ALL_PRODUCTS_REQUEST, getAllProductRequest);
   // yield takeEvery(FACEBOOK_SIGN_IN_REQUEST, facebookSignIn);
 }
 

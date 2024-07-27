@@ -5,6 +5,8 @@ import {
   SIGNUP_FAILED,
   GOOGLE_SIGN_IN_SUCCESS,
   GOOGLE_SIGN_IN_FAILED,
+  Get_ALL_PRODUCTS_SUCCESS,
+  Get_ALL_PRODUCTS_FAILED
   // FACEBOOK_SIGN_IN_SUCCESS,
   // FACEBOOK_SIGN_IN_FAILED,
 } from './actions';
@@ -31,6 +33,11 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, message: 'Sign up successful! Please log in.' };
     case SIGNUP_FAILED:
       return { ...state, message: action.message };
+
+      case Get_ALL_PRODUCTS_SUCCESS:
+        return { ...state, message: 'Products' };
+        case Get_ALL_PRODUCTS_SUCCESS:
+          return { ...state, message: 'Failed to retrieved products' };
     default:
       return state;
   }
