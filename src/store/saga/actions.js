@@ -15,6 +15,11 @@ export const FACEBOOK_SIGN_IN_REQUEST = 'FACEBOOK_SIGN_IN_REQUEST';
 export const FACEBOOK_SIGN_IN_SUCCESS = 'FACEBOOK_SIGN_IN_SUCCESS';
 export const FACEBOOK_SIGN_IN_FAILED = 'FACEBOOK_SIGN_IN_FAILED';
 
+export const GET_ALL_PRODUCTS_REQUEST = 'GET_ALL_PRODUCTS_REQUEST';
+export const GET_ALL_PRODUCTS_SUCCESS = 'GET_ALL_PRODUCTS_SUCCESS';
+export const GET_ALL_PRODUCTS_FAILED = 'GET_ALL_PRODUCTS_FAILED';
+
+
 // Auth Action Creators
 export const loginRequest = (payload) => ({
   type: LOGIN_REQUEST,
@@ -57,6 +62,22 @@ export const googleSignInSuccess = (payload) => ({
 
 export const googleSignInFailed = (message) => ({
   type: GOOGLE_SIGN_IN_FAILED,
+  message,
+});
+
+
+export const getAllProductRequest = (payload) => ({
+  type: LOGIN_REQUEST,
+  payload,
+});
+
+export const getAllProductSuccess = (payload) => ({
+  type: LOGIN_SUCCESS,
+  payload,
+});
+
+export const getAllProductFailed = (message) => ({
+  type: LOGIN_FAILED,
   message,
 });
 
